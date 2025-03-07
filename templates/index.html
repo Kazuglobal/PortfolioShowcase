@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="splash-screen">
+    <div class="splash-content">
+        <h1>Welcome</h1>
+        <p>Click anywhere to enter</p>
+    </div>
+</div>
+
+<div class="main-content" style="display: none;">
+    <div class="hero">
+        <canvas id="three-canvas"></canvas>
+        <div class="hero-content">
+            <h1 class="animate-text">KAZUSHI ODATE</h1>
+            <p class="animate-text">Welcome to our digital experience</p>
+
+            <div class="hero-buttons">
+                <a href="{{ url_for('events') }}" class="hero-button events-btn animate-text">Events</a>
+                <a href="#about" class="hero-button about-btn animate-text">About</a>
+                <a href="#info" class="hero-button info-btn animate-text">Info</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>We are a creative studio specializing in immersive web experiences. Our team combines cutting-edge technology with artistic vision to create unique digital solutions.</p>
+                    <ul class="about-features">
+                        <li>3D Web Development</li>
+                        <li>Interactive Design</li>
+                        <li>Creative Technology</li>
+                        <li>Digital Innovation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="info" class="section info-section">
+        <div class="container">
+            <h2 class="section-title">Info</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Location</h3>
+                    <p>Tokyo, Japan</p>
+                </div>
+                <div class="info-card">
+                    <h3>Contact</h3>
+                    <p>info@example.com</p>
+                </div>
+                <div class="info-card">
+                    <h3>Services</h3>
+                    <p>Web Design, 3D Development, Interactive Experiences</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/splash.js') }}"></script>
+{% endblock %}
