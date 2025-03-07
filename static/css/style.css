@@ -1,0 +1,392 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Custom cursor */
+.cursor {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.cursor-follower {
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    transition: transform 0.2s ease;
+}
+
+/* Form elements should have default cursor */
+input, textarea, button, select {
+    cursor: auto;
+}
+
+button, .submit-btn {
+    cursor: pointer;
+}
+
+.cursor.active {
+    transform: scale(1.5);
+}
+
+.cursor-follower.active {
+    transform: scale(2);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Navigation */
+.main-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #2194ce;
+}
+
+/* Hero section */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+#three-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+/* Portfolio grid */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.project-image img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .project-image img {
+    transform: scale(1.1);
+}
+
+.project-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .project-info {
+    transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cursor, .cursor-follower {
+        display: none;
+    }
+
+    .section {
+        padding: 80px 0;
+        margin-top: 30vh;
+    }
+
+    #about, #info {
+        padding-top: 120px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* Splash screen styles */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.splash-content {
+    text-align: center;
+    color: #fff;
+}
+
+.splash-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+.splash-content p {
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 0.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Make sure main content is hidden initially */
+.main-content {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.main-content.visible {
+    opacity: 1;
+}
+
+/* Hero Buttons */
+.hero-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.hero-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #2194ce;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+
+.hero-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #2194ce;
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.hero-button:hover {
+    color: #fff;
+}
+
+.hero-button:hover:before {
+    transform: translateX(100%);
+}
+
+/* Sections */
+.section {
+    padding: 100px 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.section:first-of-type {
+    margin-top: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.about-features {
+    list-style: none;
+    margin-top: 1.5rem;
+}
+
+.about-features li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.about-features li:before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #2194ce;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.info-card h3 {
+    color: #2194ce;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+#about {
+    background: #0a0a0a;
+}
+
+#info {
+    background: #0a0a0a;
+}
+
+/* Animation classes */
+.section.active .section-title,
+.section.active .about-content,
+.section.active .info-grid {
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
